@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de tarefas</title>
+    <!-- aula 18 até a aula 23-->
+</head>
+<body>
+    <div id="app" class="container">
+        <h2>{{ titulo }}</h2> <!-- interpolação da página script.js -->
+        <div class="input-group">
+            <input @keyup.enter="adicionarTarefa" class="form-control" type="text" v-model="novaTarefa">
+            <span class="input-group-btn">
+                <button @click="adicionarTarefa" class="btn btn-primary">
+                    Adicionar
+                </button>
+            </span>
+        </div>
+        <ul>
+            <li v-for="(tarefa, index) in tarefas" :key="index" :class="{'removed': tarefa.checked}">
+                    <input v-model="tarefa.checked" type="checkbox">
+                    <label>{{ tarefa.titulo }}</label>
+            </li>
+        </ul>
+        <p><em>Total de tarefas:</em> <span>{{ totalTarefas}}</span></p>
+        <p><em>Tarefas concluídas:</em> <span>{{ totalTarefasConcluidas }}</span></p>
+        <footer>
+            <hr>
+            <em>Altere o título da sua lista de tarefas</em>
+            <input type="text" v-model="titulo">
+        </footer>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
